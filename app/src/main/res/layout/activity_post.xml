@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#D7D7D7"
     android:layout_height="match_parent"
-    tools:context=".PostUpdateActivity">
-
-
+    android:orientation="vertical"
+    android:background="#D7D7D7"
+    android:padding="20dp"
+    tools:context=".PostActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -94,4 +92,4 @@
         android:layout_height="wrap_content"
         android:text="Add / Edit"/>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>

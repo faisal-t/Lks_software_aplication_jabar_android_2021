@@ -1,10 +1,10 @@
 package com.fmahromi.lks_software_aplication_jabar_android_2021
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.fmahromi.lks_software_aplication_jabar_android_2021.api.ClietApi
 import com.fmahromi.lks_software_aplication_jabar_android_2021.model.ResponseMenu
 import com.fmahromi.lks_software_aplication_jabar_android_2021.model.ResponsePost
@@ -13,10 +13,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostUpdateActivity : AppCompatActivity() {
+class PostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post_update)
+        setContentView(R.layout.activity_post)
 
         val btnAddPost : Button = findViewById(R.id.btn_post_edit)
         val edtName = findViewById<TextInputEditText>(R.id.edt_post_name)
@@ -27,28 +27,29 @@ class PostUpdateActivity : AppCompatActivity() {
 
         if (jenis == "post"){
             Toast.makeText(this, "post toast", Toast.LENGTH_SHORT).show()
-            val name = edtName.text.toString()
-            val description = edtDescription.text.toString()
-            val price = edtPrice.text.toString()
 
             btnAddPost.setOnClickListener {
-                Toast.makeText(this, name+" "+description+" "+price, Toast.LENGTH_SHORT).show()
-//                ClietApi.api.postMenu(name,description,price.toInt()).enqueue(object : Callback<ResponsePost<Any>>{
-//                    override fun onResponse(
-//                        call: Call<ResponsePost<Any>>,
-//                        response: Response<ResponsePost<Any>>
-//                    ) {
-//                        Toast.makeText(this@PostUpdateActivity , response.message().toString(), Toast.LENGTH_SHORT).show()
-//                        val intent = Intent(this@PostUpdateActivity,MenuActivity::class.java)
-//                        startActivity(intent)
-//                    }
-//
-//                    override fun onFailure(call: Call<ResponsePost<Any>>, t: Throwable) {
-//                        Toast.makeText(this@PostUpdateActivity, "error", Toast.LENGTH_SHORT).show()
-//                    }
-//
-//
-//                })
+                val name = edtName.text.toString()
+                val description = edtDescription.text.toString()
+                val price = edtPrice.text.toString()
+
+//                Toast.makeText(this, name+" "+description+" "+price, Toast.LENGTH_SHORT).show()
+                ClietApi.api.postMenu(name,description,price.toInt()).enqueue(object : Callback<ResponsePost<Any>>{
+                    override fun onResponse(
+                        call: Call<ResponsePost<Any>>,
+                        response: Response<ResponsePost<Any>>
+                    ) {
+                        Toast.makeText(this@PostActivity , response.message().toString(), Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@PostActivity,MenuActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                    override fun onFailure(call: Call<ResponsePost<Any>>, t: Throwable) {
+                        Toast.makeText(this@PostActivity, "error", Toast.LENGTH_SHORT).show()
+                    }
+
+
+                })
             }
 
         }
@@ -65,22 +66,24 @@ class PostUpdateActivity : AppCompatActivity() {
             val price = Integer.parseInt(edtPrice.text.toString())
 
             btnAddPost.setOnClickListener {
-                ClietApi.api.putMenu(id,name,description,price)?.enqueue(object :Callback<ResponseMenu>{
+                ClietApi.api.putMenu(id,name,description,price)?.enqueue(object :
+                    Callback<ResponseMenu> {
                     override fun onResponse(
                         call: Call<ResponseMenu>,
                         response: Response<ResponseMenu>
                     ) {
-                        Toast.makeText(this@PostUpdateActivity , "success", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@PostUpdateActivity,MenuActivity::class.java)
+                        Toast.makeText(this@PostActivity , "success", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@PostActivity,MenuActivity::class.java)
                         startActivity(intent)
                     }
 
                     override fun onFailure(call: Call<ResponseMenu>, t: Throwable) {
-                        Toast.makeText(this@PostUpdateActivity, "error", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@PostActivity, "error", Toast.LENGTH_SHORT).show()
                     }
                 } )
             }
 
         }
+
     }
 }

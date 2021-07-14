@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object ClietApi{
-    val BASE_URL = "http://192.168.0.104/lks-contoh/api/"
+    val BASE_URL = "http://192.168.0.113/lks-contoh/api/"
 
     val gson = GsonBuilder()
         .setLenient()

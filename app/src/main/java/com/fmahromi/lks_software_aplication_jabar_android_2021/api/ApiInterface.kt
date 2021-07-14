@@ -1,6 +1,7 @@
 package com.fmahromi.lks_software_aplication_jabar_android_2021.api
 
 import com.fmahromi.lks_software_aplication_jabar_android_2021.model.ResponseMenu
+import com.fmahromi.lks_software_aplication_jabar_android_2021.model.ResponsePost
 import com.fmahromi.lks_software_aplication_jabar_android_2021.model.ResponseUsers
 import retrofit2.Call
 import retrofit2.http.*
@@ -29,13 +30,13 @@ interface ApiInterface {
     fun postMenu(
         @Field("name") name : String,
         @Field("description") description : String,
-        @Field("price") price : Int?
-    ): Call<ResponseMenu>
+        @Field("price") price : Int
+    ): Call<ResponsePost<Any>>
 
     @PUT("updateMenu.php")
     @FormUrlEncoded
     fun putMenu(
-        @Field("name") id : Int,
+        @Field("id") id : Int,
         @Field("name") name : String,
         @Field("description") description : String,
         @Field("price") price : Int

@@ -25,7 +25,7 @@ class MenuActivity : AppCompatActivity() {
         val btnAddMenu = findViewById<FloatingActionButton>(R.id.fab)
 
         btnAddMenu.setOnClickListener {
-            val intent = Intent(this,PostUpdateActivity::class.java)
+            val intent = Intent(this,PostActivity::class.java)
             intent.putExtra("jenis","post")
             startActivity(intent)
         }

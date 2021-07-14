@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lks_software_aplication_jabar_android_2021">
-        <activity android:name=".PostUpdateActivity"></activity>
+        <activity android:name=".PostActivity"></activity>
+        <activity android:name=".PostUpdateActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".ReqgisterActivity" />
         <activity android:name=".MainActivity">
